@@ -29,81 +29,58 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.ACStatus = new System.Windows.Forms.Label();
-            this.CPUTempurture = new System.Windows.Forms.Label();
             this.BatteryStatus = new System.Windows.Forms.Label();
-            this.CPUSpeed = new System.Windows.Forms.Label();
+            this.TimeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(10, 10);
+            this.label1.Location = new System.Drawing.Point(10, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 40);
             this.label1.TabIndex = 0;
             this.label1.Text = "電源";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(10, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 40);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "プロセッサ";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // ACStatus
             // 
-            this.ACStatus.Location = new System.Drawing.Point(110, 10);
+            this.ACStatus.Location = new System.Drawing.Point(110, 50);
             this.ACStatus.Name = "ACStatus";
             this.ACStatus.Size = new System.Drawing.Size(90, 40);
             this.ACStatus.TabIndex = 2;
-            this.ACStatus.Text = "不明";
+            this.ACStatus.Text = "???";
             this.ACStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // CPUTempurture
-            // 
-            this.CPUTempurture.Location = new System.Drawing.Point(110, 50);
-            this.CPUTempurture.Name = "CPUTempurture";
-            this.CPUTempurture.Size = new System.Drawing.Size(90, 40);
-            this.CPUTempurture.TabIndex = 3;
-            this.CPUTempurture.Text = "?????℃";
-            this.CPUTempurture.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BatteryStatus
             // 
-            this.BatteryStatus.Location = new System.Drawing.Point(210, 10);
+            this.BatteryStatus.Location = new System.Drawing.Point(210, 50);
             this.BatteryStatus.Name = "BatteryStatus";
             this.BatteryStatus.Size = new System.Drawing.Size(90, 40);
             this.BatteryStatus.TabIndex = 4;
             this.BatteryStatus.Text = "???%";
             this.BatteryStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // CPUSpeed
+            // TimeLabel
             // 
-            this.CPUSpeed.Location = new System.Drawing.Point(210, 50);
-            this.CPUSpeed.Name = "CPUSpeed";
-            this.CPUSpeed.Size = new System.Drawing.Size(90, 40);
-            this.CPUSpeed.TabIndex = 5;
-            this.CPUSpeed.Text = "????GHz";
-            this.CPUSpeed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.TimeLabel.Location = new System.Drawing.Point(10, 10);
+            this.TimeLabel.Name = "TimeLabel";
+            this.TimeLabel.Size = new System.Drawing.Size(290, 40);
+            this.TimeLabel.TabIndex = 6;
+            this.TimeLabel.Text = "label3";
+            this.TimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(314, 450);
-            this.Controls.Add(this.CPUSpeed);
+            this.ClientSize = new System.Drawing.Size(314, 101);
+            this.Controls.Add(this.TimeLabel);
             this.Controls.Add(this.BatteryStatus);
-            this.Controls.Add(this.CPUTempurture);
             this.Controls.Add(this.ACStatus);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(330, 489);
-            this.MinimumSize = new System.Drawing.Size(330, 489);
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.Text = "電源プロセッサ監視";
@@ -114,11 +91,9 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label ACStatus;
-        private System.Windows.Forms.Label CPUTempurture;
         private System.Windows.Forms.Label BatteryStatus;
-        private System.Windows.Forms.Label CPUSpeed;
+        private System.Windows.Forms.Label TimeLabel;
     }
 }
 

@@ -7,49 +7,102 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Timers;
 
 namespace ComputerManager
 {
     public partial class MainForm : Form
     {
+        delegate void BattDelegate();
         public MainForm()
         {
             InitializeComponent();
+            var timer = new System.Windows.Forms.Timer();
+            timer.Interval = 100;
+            timer.Start();
+            timer.Tick += (sender, e) =>
+            {
+                try
+                {
+                    timer.Stop();
+                    Battery();
+                }
+                finally
+                {
+                    timer.Start();
+                }
+            };
+            timer.Start();
+            //timer.Stop();
+            //using (timer) { }
         }
         public void Battery()
         {
             ACStatus.Text = "電源状態不明";
             BatteryStatus.Text = "???%";
-            //enum BatteryPercentage
-        {
-            
-        };
-            
-            ;
-            switch (BatteryPercentage)
+            DateTime dt = DateTime.Now;
+            TimeLabel.Text = dt.ToString("HH:mm:ss");
+            PowerLineStatus PowerLineStatus = SystemInformation.PowerStatus.PowerLineStatus;
+            BatteryChargeStatus BatteryChargeStatus = SystemInformation.PowerStatus.BatteryChargeStatus;
+            switch (PowerLineStatus)
             {
-                case BatteryChargeStatus.High:
-                    BatteryStatus.Text = "高い";
+                case PowerLineStatus.Online:
+                    switch (BatteryChargeStatus)
+                    {
+                        case BatteryChargeStatus.Charging:
+                            ACStatus.Text = "AC電源\nバッテリー充電中";
+                            break;
+                        case BatteryChargeStatus.NoSystemBattery:
+                            ACStatus.Text = "AC電源";
+                            break;
+                        case BatteryChargeStatus.Critical:
+                            ACStatus.Text = "AC電源\nバッテリー僅少";
+                            break;
+                        case BatteryChargeStatus.High:
+                            ACStatus.Text = "AC電源\nバッテリー高";
+                            break;
+                        case BatteryChargeStatus.Low:
+                            ACStatus.Text = "AC電源\nバッテリー少";
+                            break;
+                        default:
+                            ACStatus.Text = "AC電源\nバッテリー不明";
+                            break;
+                    }
+                    BatteryStatus.Text = "";
                     break;
-                case BatteryChargeStatus.Low:
-                    BatteryStatus.Text = "低い";
-                    break;
-                case BatteryChargeStatus.Critical:
-                    BatteryStatus.Text = "非常に低い";
-                    break;
-                case BatteryChargeStatus.Charging:
-                    BatteryStatus.Text = "充電中";
-                    break;
-                case BatteryChargeStatus.NoSystemBattery:
-                    BatteryStatus.Text = "バッテリーは存在しない";
-                    break;
-                case BatteryChargeStatus.Unknown:
-                    BatteryStatus.Text = "不明";
+                case PowerLineStatus.Offline:
+                    switch (BatteryChargeStatus)
+                    {
+
+                        case BatteryChargeStatus.Charging:
+                            ACStatus.Text = "バッテリー充電中";
+                            break;
+                        case BatteryChargeStatus.Critical:
+                            ACStatus.Text = "バッテリー僅少";
+                            break;
+                        case BatteryChargeStatus.High:
+                            ACStatus.Text = "バッテリー高";
+                            break;
+                        case BatteryChargeStatus.Low:
+                            ACStatus.Text = "バッテリー少";
+                            break;
+                        default:
+                            ACStatus.Text = "バッテリー不明";
+                            break;
+                    }
+                    float BatteryPercent = SystemInformation.PowerStatus.BatteryLifePercent;
+                    BatteryStatus.Text = (BatteryPercent * 100).ToString() + "%";
                     break;
                 default:
-                    BatteryStatus.Text = "不明";
+                    ACStatus.Text = "お手上げ";
                     break;
+
             }
         }
+        public void Processor()
+        {
+
+        }
+
     }
 }
