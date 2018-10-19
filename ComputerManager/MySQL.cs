@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+//using MySql.Data.MySqlClient;
 
 namespace ComputerManager
 {
@@ -11,9 +11,9 @@ namespace ComputerManager
     {
         private void MySQLConnection()
         {
-            string ConnectString = "userid=;password=;database=Tset;Host=harmine.jp";
+            /*string ConnectString = "userid=;password=;database=Tset;Host=harmine.jp";
             MySqlConnection Connection = new MySqlConnection(ConnectString);
-            Connection.Open();
+            Connection.Open();*/
         }
 
 

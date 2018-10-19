@@ -44,6 +44,7 @@ namespace ComputerManager
             TimeLabel.Text = dt.ToString("HH:mm:ss");
             PowerLineStatus PowerLineStatus = SystemInformation.PowerStatus.PowerLineStatus;
             BatteryChargeStatus BatteryChargeStatus = SystemInformation.PowerStatus.BatteryChargeStatus;
+            float BatteryPercent = SystemInformation.PowerStatus.BatteryLifePercent;
             switch (PowerLineStatus)
             {
                 case PowerLineStatus.Online:
@@ -71,7 +72,14 @@ namespace ComputerManager
                             ACStatus.Text = "AC電源\nバッテリー中";
                             break;
                     }
-                    BatteryStatus.Text = "";
+                    if (BatteryChargeStatus == BatteryChargeStatus.NoSystemBattery)
+                    {
+                        BatteryStatus.Text = "";
+                    }
+                    else
+                    {
+                        BatteryStatus.Text = (BatteryPercent * 100).ToString() + "%";
+                    }
                     break;
                 case PowerLineStatus.Offline:
                     switch (BatteryChargeStatus)
@@ -96,7 +104,6 @@ namespace ComputerManager
                             ACStatus.Text = "バッテリー中";
                             break;
                     }
-                    float BatteryPercent = SystemInformation.PowerStatus.BatteryLifePercent;
                     BatteryStatus.Text = (BatteryPercent * 100).ToString() + "%";
                     break;
                 default:
