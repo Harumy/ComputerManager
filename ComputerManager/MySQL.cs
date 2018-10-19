@@ -11,7 +11,7 @@ namespace ComputerManager
     {
         private void MySQLConnection()
         {
-            string ConnectString = "userid=harumy;password=anct270422;database=Tset;Host=harmine.jp";
+            string ConnectString = "userid=;password=;database=Tset;Host=harmine.jp";
             MySqlConnection Connection = new MySqlConnection(ConnectString);
             Connection.Open();
         }
