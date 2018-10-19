@@ -64,8 +64,11 @@ namespace ComputerManager
                         case BatteryChargeStatus.Low:
                             ACStatus.Text = "AC電源\nバッテリー少";
                             break;
-                        default:
+                        case BatteryChargeStatus.Unknown:
                             ACStatus.Text = "AC電源\nバッテリー不明";
+                            break;
+                        default:
+                            ACStatus.Text = "AC電源\nバッテリー中";
                             break;
                     }
                     BatteryStatus.Text = "";
@@ -86,8 +89,11 @@ namespace ComputerManager
                         case BatteryChargeStatus.Low:
                             ACStatus.Text = "バッテリー少";
                             break;
-                        default:
+                        case BatteryChargeStatus.Unknown:
                             ACStatus.Text = "バッテリー不明";
+                            break;
+                        default:
+                            ACStatus.Text = "バッテリー中";
                             break;
                     }
                     float BatteryPercent = SystemInformation.PowerStatus.BatteryLifePercent;
