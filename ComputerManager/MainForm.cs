@@ -112,10 +112,6 @@ namespace ComputerManager
 
             }
         }
-        public void Processor()
-        {
-
-        }
 
     }
 }

@@ -83,7 +83,7 @@
             this.MaximumSize = new System.Drawing.Size(330, 489);
             this.Name = "MainForm";
             this.ShowIcon = false;
-            this.Text = "電源プロセッサ監視";
+            this.Text = "システム監視";
             this.ResumeLayout(false);
 
         }

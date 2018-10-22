@@ -14,6 +14,7 @@ namespace ComputerManager
             string ConnectString = "userid=;password=;database=Tset;Host=harmine.jp";
             MySqlConnection Connection = new MySqlConnection(ConnectString);
             Connection.Open();
+            
         }
 
 
